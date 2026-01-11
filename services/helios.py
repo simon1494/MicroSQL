@@ -3,7 +3,7 @@ import asyncio
 from config import settings
 
 
-class HeliosWebhook:
+class HeliosService:
     @staticmethod
     def enviar(
         datos_usuario, ruta, metodo_http, detalles=None, id_interno_servicio=None
