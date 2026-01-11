@@ -4,7 +4,7 @@ from starlette.requests import Request
 from internal.exposed_logic import ExposedLogic
 
 
-class Exposed(BaseView, ExposedLogic):
+class ExposedView(BaseView, ExposedLogic):
     identity = "exposed"
     name = "exposed"
 

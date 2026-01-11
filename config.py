@@ -19,7 +19,7 @@ class Config(BaseSettings):
         default=1, validation_alias=AliasChoices("APP_WORKERS", "WORKERS")
     )
 
-    RELOAD: bool = False
+    DEVELOPMENT: bool = False
     LOGGER: bool = False
     LOGGER_LEVEL: str | None = None
 

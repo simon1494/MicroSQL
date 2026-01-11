@@ -36,4 +36,5 @@ class HeliosService:
                 print(e)
                 pass
 
-        asyncio.create_task(_task())
+        if settings.DEVELOPMENT is False:
+            asyncio.create_task(_task())

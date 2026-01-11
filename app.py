@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from config import settings
@@ -7,6 +8,7 @@ from admin.custom_admin import CustomAdmin
 import uvicorn
 from contextlib import asynccontextmanager
 from database.db import async_engine
+from views import exposed
 
 # from docs_apps import docs_gen, docs_op, DocsAuthMiddleware
 # from fastapi.staticfiles import StaticFiles
@@ -52,8 +54,8 @@ app.add_middleware(
 )
 
 """app.mount("/documentacion", docs_gen)
-app.mount("/documentacion-operadores", docs_op)
-app.mount("/static", StaticFiles(directory="static"), name="static")"""
+app.mount("/documentacion-operadores", docs_op)"""
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/", include_in_schema=False)
@@ -74,11 +76,13 @@ admin = CustomAdmin(
 
 # app.add_middleware(DocsAuthMiddleware)
 
+admin.add_view(exposed.ExposedView)
+
 
 if __name__ == "__main__":
     uvicorn.run(
         "app:app",
         host=settings.APP_HOST,
         port=settings.APP_PORT,
-        reload=settings.RELOAD,
+        reload=settings.DEVELOPMENT,
     )
