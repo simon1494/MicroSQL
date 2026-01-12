@@ -1,5 +1,6 @@
 import httpx
 from config import settings
+from utilities.utils import get_original_ip
 
 
 class CerberusService:
@@ -40,3 +41,32 @@ class CerberusService:
             return False
 
         return response.json()
+
+    @staticmethod
+    async def ip_habilitada(request):
+        try:
+            async with httpx.AsyncClient() as client:
+                response = await client.get(
+                    f"{settings.AUTH_API}/estado-ip",
+                    params={"ip": get_original_ip(request)},
+                )
+        except httpx.RequestError:
+            return False
+
+        data = response.json()
+        habilitada = data.get("estado")
+        restantes = data.get("restantes")
+        return habilitada, restantes
+
+    @staticmethod
+    async def sumar_intento_fallido(request):
+        # Fiscaliza el intento llamando al endpoint asincrónicamente (POST)
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(
+                f"{settings.AUTH_API}/sumar-fallido",
+                params={"ip": get_original_ip(request)},
+            )
+            data = resp.json()
+            habilitada = data.get("estado", 0)
+            restantes = data.get("restantes", 0)
+            return habilitada, restantes

@@ -6,9 +6,8 @@ from starlette.responses import Response, RedirectResponse
 from starlette.datastructures import URL
 from typing import no_type_check
 from sqladmin.helpers import get_object_identifier
-from config import settings
-import httpx
 from services.helios import HeliosService
+from services.cerberus import CerberusService
 
 
 class CustomAdmin(Admin):
@@ -42,29 +41,17 @@ class CustomAdmin(Admin):
         if request.method == "GET":
             return await self.templates.TemplateResponse(request, "sqladmin/login.html")
 
-        habilitada, restantes = await self.ip_habilitada(request)
+        habilitada, restantes = await CerberusService.ip_habilitada(request)
         if not habilitada:
             context["error"] = f"IP bloqueada - Reintente en {int(restantes)} minutos"
             return await self.templates.TemplateResponse(
                 request, "sqladmin/login.html", context, status_code=400
             )
 
-        ok = await self.authentication_backend.login(request)  # asd
+        ok = await self.authentication_backend.login(request)
 
         if not ok:
-            # Obtiene la IP del usuario
-            ip = self.get_original_ip(request)
-
-            # Fiscaliza el intento llamando al endpoint asincrónicamente (POST)
-            async with httpx.AsyncClient() as client:
-                resp = await client.post(
-                    f"{settings.AUTH_API}/sumar-fallido",
-                    params={"ip": ip},
-                )
-                data = resp.json()
-                habilitada = data.get("estado", 0)
-                restantes = data.get("restantes", 0)
-
+            habilitada, restantes = await CerberusService.sumar_intento_fallido(request)
             if habilitada:
                 context["error"] = (
                     f"Credenciales inválidas - {restantes} intentos restantes"
@@ -85,34 +72,6 @@ class CustomAdmin(Admin):
         )
 
         return RedirectResponse(request.url_for("admin:index"), status_code=302)
-
-    async def ip_habilitada(self, request):
-        ip = self.get_original_ip(request)
-        try:
-            async with httpx.AsyncClient() as client:
-                response = await client.get(
-                    f"{settings.AUTH_API}/estado-ip",
-                    params={"ip": ip},
-                )
-        except httpx.RequestError:
-            return False
-
-        data = response.json()
-        habilitada = data.get("estado")
-        restantes = data.get("restantes")
-        return habilitada, restantes
-
-    def get_original_ip(self, request: Request):
-        h = request.headers
-        return (
-            h.get("x-real-ip")
-            or (
-                h.get("x-forwarded-for", "").split(",")[0].strip()
-                if h.get("x-forwarded-for")
-                else None
-            )
-            or request.client.host
-        )
 
     def get_save_redirect_url(
         self, request: Request, form, model_view, obj
