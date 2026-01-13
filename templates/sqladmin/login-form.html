@@ -1,16 +1,11 @@
-{% if not error %}
-  {% include "sqladmin/login-logo.html" %}
-{% endif %} 
-
-
 <div class="d-flex align-items-center justify-content-center vh-100">
     {% if not error %}
-    <form style="display: none;" id="div-form" class="Fcol-lg-6 col-md-6 card card-md" action="{{ url_for('admin:login') }}" method="POST" autocomplete="off">
+    <form id="formulario-login" class="Fcol-lg-6 col-md-6 card card-md" action="{{ url_for('admin:login') }}" method="POST" autocomplete="off">
     {% else %}
-    <form id="div-form" class="Fcol-lg-6 col-md-6 card card-md" action="{{ url_for('admin:login') }}" method="POST" autocomplete="off">  
+    <form id="formulario-login" class="Fcol-lg-6 col-md-6 card card-md" action="{{ url_for('admin:login') }}" method="POST" autocomplete="off">  
     {% endif %}
       <div class="card-body">
-        <h1 class="text-center mb-4 f-sierra title-login degrade">{{ admin.title }}</h1>
+        <h1 class="text-center mb-4 f-sierra title-login degrade-login">{{ admin.title }}</h1>
         <div class="mb-3">
           <label class="form-label login-label">Usuario</label>
           {% if error %}
@@ -21,13 +16,11 @@
           {% endif %}
         </div>
         <div class="mb-2">
-          <label class="form-label login-label">
-            Contraseña
-          </label>
+          <label class="form-label login-label">Contraseña</label>
           <div class="input-group">
             <input id="login-pass-input" name="password" type="password" class="form-control login{% if error %} is-invalid{% endif %}" placeholder="Ingrese contraseña" autocomplete="off">
             <button type="button" class="btn" id="toggle-pass" tabindex="-1">
-              <span id="eye-icon" class="fa-solid fa-eye-slash degrade"></span>
+              <span id="eye-icon" class="fa-solid fa-eye-slash degrade-login"></span>
             </button>
             {% if error %}
               <div class="invalid-feedback">{{ error }}</div>
@@ -35,7 +28,7 @@
           </div>
         </div>
         <div class="form-footer">
-          <button id="button-sbt" type="submit" class="btn btn-primary w-100">Ingresar</button>
+          <button id="button-sbt-login" type="submit" class="btn btn-primary w-100">Ingresar</button>
         </div>
       </div>
     </form>
@@ -48,10 +41,10 @@
     toggleBtn.addEventListener("click", function() {
       if (passInput.type === "password") {
         passInput.type = "text";
-        eyeIcon.className = "fa-solid fa-eye degrade";
+        eyeIcon.className = "fa-solid fa-eye degrade-login";
       } else {
         passInput.type = "password";
-        eyeIcon.className = "fa-solid fa-eye-slash degrade";
+        eyeIcon.className = "fa-solid fa-eye-slash degrade-login";
       }
     });
   });

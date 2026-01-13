@@ -1,33 +1,9 @@
 {% extends "sqladmin/base.html" %}
 {% block body %}
-  <div id="coverAll">
+  <div id="fondo-login">
     {% include "sqladmin/login-form.html" %}
   </div>
 {% endblock %}
 
 {% block tail %}
-    <script>
-        const loader = document.querySelector(".fire");
-        const form = document.getElementById("div-form");
-
-        loader.addEventListener("click", () => {
-          // Fade out del loader
-          loader.style.opacity = "0";
-
-          setTimeout(() => {
-            // Después del fade out, ocultar completamente
-            loader.style.display = "none";
-
-            // Mostrar el form y hacer fade in
-            form.style.opacity = "0";
-            form.style.display = "block";
-
-            // Usamos requestAnimationFrame para asegurar el reflow antes del cambio de opacidad
-            requestAnimationFrame(() => {
-              form.style.opacity = "1";
-            });
-          }, 500); // debe coincidir con la duración del fade-out
-        });
-
-    </script>
 {% endblock tail %}

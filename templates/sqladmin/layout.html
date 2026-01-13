@@ -9,7 +9,7 @@
         <a href="{{ url_for('admin:index') }}">
           <div id="lobby-logo">
           <img src="{{ admin.logo_url }}" width="120" height="120" alt="Admin" class="navbar-brand-image mb-1" />
-          <div class="f-sierra title-text degrade2 fs-1">{{ admin.title }}</div>
+          <div class="f-sierra title-text degrade-lobby logo-title-lobby">{{ admin.title }}</div>
           </div>
         </a>
       </h1>
@@ -27,15 +27,15 @@
   </aside>
   <div class="page-wrapper">
     <div class="container-fluid">
-      <div class="page-header d-flex justify-content-around align-items-center text-bg-dark border border-dark-subtle rounded-2 px-3 flex-row">
+      <div class="page-header d-flex justify-content-around align-items-center text-bg-dark border border-dark-subtle rounded-2 px-3 flex-row supbar-lobby">
         <span class="me-auto fs-3" >{{ request.session.get("apellido") }}, {{ request.session.get("nombre") }} ({{ request.session.get("rol").upper() }}) -- {{ request.session.get("destino") }}</span>
         <div class="btn-group dropleft">
           <button class="btn btn-outline-secondary border-0 fs-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-square-caret-down degrade2"></i>
+            <i class="fa-solid fa-square-caret-down degrade-lobby"></i>
           </button>
           <div class="dropdown-menu text-bg-dark border border-dark-subtle">
-            <a id="btn-datos-personales" class="dropdown-item text-bg-dark border border-0 fs-3" href="/quiron/datos-personales">Cambiar Datos Personales</a>
-            <a id="btn-cambiar-paasw" class="dropdown-item text-bg-dark border border-0 fs-3" href="/quiron/cambiar-passw">Cambiar Contraseña</a>
+            <a id="btn-datos-personales" class="dropdown-item text-bg-dark border border-0 fs-3" href="/ariadna/datos-personales">Cambiar Datos Personales</a>
+            <a id="btn-cambiar-paasw" class="dropdown-item text-bg-dark border border-0 fs-3" href="/ariadna/cambiar-passw">Cambiar Contraseña</a>
             <a id="btn-cerrar" class="dropdown-item text-bg-dark border border-0 fs-3" href="{{ request.url_for('admin:logout') }}">Cerrar Sesión</a>
           </div>
         </div>

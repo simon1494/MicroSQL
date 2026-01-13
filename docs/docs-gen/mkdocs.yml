@@ -1,0 +1,51 @@
+site_name: Ariadna - Centro de Ayuda
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: green
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - scheme: slate
+      primary: pink
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - header.autohide
+
+plugins:
+  - glightbox
+  - search
+  - to-pdf:
+      verbose: true
+      author: "Autor: Direccion Reunion de Información"
+      copyright: Copyright © Juan de los Palotes 2025
+      cover: true
+      cover_logo: cover.png
+      cover_title: Sistema Ariadna
+      cover_subtitle: Guia de Usuario - Operadores
+      toc_title: "Contenido"
+      output_path: guia-ariadna-op.pdf
+
+nav:
+  - Introducción: index.md
+  - Sobre esta Sitio: version.md
+  - Volver a Principal: /
+
+hooks:
+  - hooks.py
+
+markdown_extensions:
+  - admonition
+  - attr_list
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+  - stylesheets/extra.css

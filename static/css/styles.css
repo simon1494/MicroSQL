@@ -1,12 +1,7 @@
+/*----------------- ESTILOS GENERALES -----------------*/
+/*-------------------------------------------------------*/
 body {
-    background-color: #16161d;
-}
-
-@font-face {
-  font-family: "Electro";
-  src: url("../../fonts/Electro.ttf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    background-color: #201109;
 }
 
 @font-face {
@@ -16,632 +11,33 @@ body {
   font-style: normal;
 }
 
-#lobby-logo, #index-back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
-.f-electro{
-  font-family: "Electro", sans-serif;
-}
-
+/*La fuente se usa principalmente para el titulo del formulario
+  de login y el nombre del servicio en el lobby*/
 .f-sierra{
   font-family: "SierraBriston", sans-serif;
 }
 
-.degrade {
-  background: linear-gradient(90deg, #9d9bff, #0300a5);
-  -webkit-background-clip: text; /* para Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  background-clip: text; /* para navegadores modernos */
-  color: transparent; /* fallback */
-}
 
-.degrade2 {
-  background: linear-gradient(90deg, #1655C4, #35f8ff);
-  -webkit-background-clip: text; /* para Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  background-clip: text; /* para navegadores modernos */
-  color: transparent; /* fallback */
-}
-
-.arial-12 {
-  font-family: Arial, sans-serif;
-  font-size: 12pt;
-}
-
-.navbar-brand-image {
-    height: 15vh;
-    width: auto;
-}
-
-
-.form-control.login {
-    background-color: black;
-}
-
-.form-label {
+/*Tamaño de las etiquetas de la mayoria de los formularios*/
+.form-label{
     font-size: larger;
 }
 
-.login-label {
-    color: white;
-}
-
-#login-pass-input, #login-user-input  {
-  color: aliceblue;
-}
-
-#coverAll {
-  z-index: 1000;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: #121212;
-  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 1px, transparent 0), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 40px 40px, 20px 20px, 20px 20px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-
-.fade-out {
-  transition: opacity 1s ease;
-  opacity: 0;
-}
-
-.fuente-error {
-  color: #ffd2e9;
-}
-
-.page-header {
-  padding-right: 3vw;
-}
-
-.title-login {
-  font-size: 2.2rem;
-  font-weight: bold;
-}
-
-
-#log-title{
-  height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#toggle-pass {
-  background-color: black
-}
-
-.form-control.is-invalid + #toggle-pass {
-  border: 1px solid #dc3545;
-}
-
-#login-pass-input:focus,
-#toggle-pass:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-
-#index-back, #fade-in {
-    opacity: 0;
-}
-
+/*Animacion de fade in*/
 #fade-in {
-    transition: opacity 0.5s ease;
-}
-
-#index-back {
-    min-height: 80vh;
-    transition: opacity 2s ease;
-}
-
-
-/* From Uiverse.io by Admin12121 */ 
-@keyframes scaleUpDown {
-  0%, 100% {
-    transform: scaleY(1) scaleX(1);
-  }
-
-  50%, 90% {
-    transform: scaleY(1.1);
-  }
-
-  75% {
-    transform: scaleY(0.95);
-  }
-
-  80% {
-    transform: scaleX(0.95);
-  }
-}
-
-@keyframes shake {
-  0%, 100% {
-    transform: skewX(0) scale(1);
-  }
-
-  50% {
-    transform: skewX(5deg) scale(0.9);
-  }
-}
-
-@keyframes particleUp {
-  0% {
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  80% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    top: -100%;
-    transform: scale(0.5);
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    background-color: #ef5a00;
-  }
-
-  50% {
-    background-color: #ff7800;
-  }
-}
-
-.fire {
-  position: absolute;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  width: 100px;
-  height: 100px;
-  background-color: transparent;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.fire-center {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  animation: scaleUpDown 3s ease-out;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.fire-center .main-fire {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(farthest-corner at 10px 0, #d43300 0%, #ef5a00 95%);
-  transform: scaleX(0.8) rotate(45deg);
-  border-radius: 0 40% 60% 40%;
-  filter: drop-shadow(0 0 10px #d43322);
-}
-
-.fire-center .particle-fire {
-  position: absolute;
-  top: 60%;
-  left: 45%;
-  width: 10px;
-  height: 10px;
-  background-color: #ef5a00;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 10px #d43322);
-  animation: particleUp 2s ease-out 0;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.fire-right {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  animation: shake 2s ease-out 0;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.fire-right .main-fire {
-  position: absolute;
-  top: 15%;
-  right: -25%;
-  width: 80%;
-  height: 80%;
-  background-color: #ef5a00;
-  transform: scaleX(0.8) rotate(45deg);
-  border-radius: 0 40% 60% 40%;
-  filter: drop-shadow(0 0 10px #d43322);
-}
-
-.fire-right .particle-fire {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 15px;
-  height: 15px;
-  background-color: #ef5a00;
-  transform: scaleX(0.8) rotate(45deg);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 10px #d43322);
-  animation: particleUp 2s ease-out 0;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.fire-left {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  animation: shake 3s ease-out 0;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.fire-left .main-fire {
-  position: absolute;
-  top: 15%;
-  left: -20%;
-  width: 80%;
-  height: 80%;
-  background-color: #ef5a00;
-  transform: scaleX(0.8) rotate(45deg);
-  border-radius: 0 40% 60% 40%;
-  filter: drop-shadow(0 0 10px #d43322);
-}
-
-.fire-left .particle-fire {
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  width: 10%;
-  height: 10%;
-  background-color: #ef5a00;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 10px #d43322);
-  animation: particleUp 3s infinite ease-out 0;
-  animation-fill-mode: both;
-}
-
-.fire-bottom .main-fire {
-  position: absolute;
-  top: 30%;
-  left: 20%;
-  width: 75%;
-  height: 75%;
-  background-color: #ff7800;
-  transform: scaleX(0.8) rotate(45deg);
-  border-radius: 0 40% 100% 40%;
-  filter: blur(10px);
-  animation: glow 2s ease-out 0;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-
-
-
-/*-----------------*/
-
-
-#coverAll {
-  z-index: 1000;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: #16161d;
-  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 1px, transparent 0), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 40px 40px, 20px 20px, 20px 20px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-
-#coverAll {
-  font-family: system-ui, sans-serif;
-  background-color: #011317;
-  color: white;
-  height: 100vh;
-  margin: 0;
-  display: grid;
-  place-items: center;
-}
-
-
-#div-form {
-    width: 20dvw;
-    height: 40dvh;
-    background-color: rgba(29, 16, 207, 0.3);
-    max-height: 23rem;
-    min-width: 23rem;
-    min-height: 21rem;
-    border-width: 0;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    transform: scale(1);
-    
-}
-
-.f-sierra{
-  font-family: "SierraBriston", sans-serif;
-}
-
-.f-redhawk{
-  font-family: "Redhawk", sans-serif;
-}
-
-.title-login {
-  font-size: 2.2rem;
-}
-
-
-#div-form:hover {
-    border-color: rgb(74, 86, 255);
-    box-shadow: 0 0 8px rgb(144, 172, 247);
-    transform: scale(1.05);
-}
-
-#button-sbt {
-    background-color: rgb(3, 6, 212)
-}
-
-.card-title.text-center.mb-4 {
-    font-size: x-large;
-}
-
-.form-control.login {
-    background-color: black;
-}
-
-.form-label .login-label{
-    font-size: larger;
-}
-
-.login-label {
-    color: white;
-}
-
-#login-pass-input, #login-user-input  {
-  color: aliceblue;
-}
-
-  .fire, 
-  #div-form, 
-  .fire-left, 
-  .fire-center, 
-  .fire-right, 
-  .fire-bottom {
-    transition: opacity 1s ease;
-  }
-
-
-/* From Uiverse.io by Juanes200122 */ 
-#svg-global {
-  zoom: 1.2;
-  overflow: visible;
-}
-
-@keyframes fade-particles {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-40px);
-    opacity: 0;
-  }
-}
-
-#particles {
-  animation: fade-particles 5s infinite alternate;
-}
-.particle {
-  animation: floatUp linear infinite;
-}
-
-.p1 {
-  animation-duration: 2.2s;
-  animation-delay: 0s;
-}
-.p2 {
-  animation-duration: 2.5s;
-  animation-delay: 0.3s;
-}
-.p3 {
-  animation-duration: 2s;
-  animation-delay: 0.6s;
-}
-.p4 {
-  animation-duration: 2.8s;
-  animation-delay: 0.2s;
-}
-.p5 {
-  animation-duration: 2.3s;
-  animation-delay: 0.4s;
-}
-.p6 {
-  animation-duration: 3s;
-  animation-delay: 0.1s;
-}
-.p7 {
-  animation-duration: 2.1s;
-  animation-delay: 0.5s;
-}
-.p8 {
-  animation-duration: 2.6s;
-  animation-delay: 0.2s;
-}
-.p9 {
-  animation-duration: 2.4s;
-  animation-delay: 0.3s;
-}
-
-@keyframes bounce-lines {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-}
-
-#line-v1,
-#line-v2,
-#node-server,
-#panel-rigth,
-#reflectores,
-#particles {
-  animation: bounce-lines 3s ease-in-out infinite alternate;
-}
-#line-v2 {
-  animation-delay: 0.2s;
-}
-
-#node-server,
-#panel-rigth,
-#reflectores,
-#particles {
-  animation-delay: 0.4s;
-}
-
-
-
-
-  #lobby-logo, #index-back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  #index-back, #fade-in{
-    opacity: 0;
-    }
-
-  #fade-in {
-    transition: opacity 0.5s ease;
-    }
-
-  #index-back {
-    min-height: 80vh;
-    transition: opacity 2s ease;
-    }
-
-body {
-    background-color: #16161d;
-  }
-
-
-#bio-container {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding-top: 5vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-#bio-container h2:last-of-type {
-  align-self: flex-end;
-  text-align: right;
-  width: 100%;
-}
-
-.fade-out {
-  transition: opacity 1s ease;
   opacity: 0;
+  transition: opacity 0.5s ease;
 }
+/*-------------------------------------------------------*/
+/*-------------------------------------------------------*/
 
-.degrade {
-  background: linear-gradient(90deg, #f86969, #f1f36c);
-  -webkit-background-clip: text; /* para Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  background-clip: text; /* para navegadores modernos */
-  color: transparent; /* fallback */
-}
 
-.degrade2 {
-  background: linear-gradient(90deg, #feffd4, #f8d5ac);
-  -webkit-background-clip: text; /* para Chrome, Safari */
-  -webkit-text-fill-color: transparent; 
-  background-clip: text; /* para navegadores modernos */
-  color: transparent; /* fallback */
-}
 
-  .navbar-brand-image {
-    height: 13vh;
-    width: auto;
-  }
-
-.extracto {
-  max-width: 60dvw;
-  word-wrap: break-word;      /* rompe palabras largas */
-  word-break: break-word;     /* rompe donde sea necesario */
-  white-space: normal;  
-  text-align: justify; 
-}
-
-.relevante {
-  background-color: #10f723 !important; /* !important para sobreescribir si hace falta */
-  color: #000000; /* texto blanco para contraste */
-}
-
-.no-supervisado {
-  background-color: #f8d50b !important; /* !important para sobreescribir si hace falta */
-  color: #000000; /* texto blanco para contraste */
-}
-
-.archivado {
-  background-color: #16161d !important; /* !important para sobreescribir si hace falta */
-  color: #ffffff; /* texto blanco para contraste */
-}
-
-.popover {
-  min-width: 50vw !important;
-  background-color: #000000;
-  color: white;
-}
-
-#status-code, #status-message {
-  color: white;
-}
-
-.status-container {
+/*----------------- FORMULARIO DE LOGIN -----------------*/
+/*-------------------------------------------------------*/
+/*Cobertor de fondo de pantalla en pagina de login*/
+#fondo-login {
   width: 100%;
   height: 100%;
 
@@ -666,51 +62,71 @@ body {
 }
 
 
-.empty{
-  background-color: #5666f342;
-  border-radius: 1rem;
+/*Estilos y posiciones del formulario de login*/
+#formulario-login {
+    width: 20dvw;
+    height: 40dvh;
+    background-color: rgba(165, 80, 10, 0.3);
+    max-height: 23rem;
+    min-width: 23rem;
+    min-height: 21rem;
+    border-width: 0;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    transform: scale(1);
+    
 }
 
-.sugerencias-input{
-  height: 20dvh;
-  width: 50dvw;
+/*Estilos del formulario de login ON HOVER*/
+#formulario-login:hover {
+    border-color: rgb(0, 102, 255);
+    box-shadow: 0 0 8px rgb(68, 127, 255);
+    transform: scale(1.05);
+}
+
+/*Estilo degrade en titulo del login y su boton ocular pass*/
+.degrade-login {
+  background: linear-gradient(90deg, hsl(0, 0%, 95%), #f06413);
+  -webkit-background-clip: text; /* para Chrome, Safari */
+  -webkit-text-fill-color: transparent; 
+  background-clip: text; /* para navegadores modernos */
+  color: transparent; /* fallback */
 }
 
 
-.estrellita.activa {
-  color: red;
-}
-
-.fa-gem.activa {
-  color: red;
+#button-sbt-login {
+    background-color: rgb(27, 88, 255)
 }
 
 
-.text-danger.fs-3 {
-  color: red !important; /* tu color personalizado */
-}
-
-.text-primary.fs-3 {
-  color: #0e56f1 !important; /* tu color personalizado */
+/*Color de fondo en los inputs del login*/
+.form-control.login {
+    background-color: black;
 }
 
 
-.bueno2{
-  max-width: 20dvw;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  justify-content: center;
+/*Titulo en formulario de login*/
+.title-login {
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 
-#toggle-pass {
-  background-color: black;
+
+/*Color de las etiquetas en formulario de login*/
+.login-label {
+    color: white;
+    font-size: larger;
 }
 
-.form-control.is-invalid + #toggle-pass {
-  border: 1px solid #dc3545;
+
+/*Color de fondo de los inputs del login*/
+#login-pass-input, #login-user-input {
+  color:  white;
 }
 
+
+/*Estilos de los inputs del login ON FOCUS*/
 #login-pass-input:focus,
 #toggle-pass:focus {
   outline: none;
@@ -718,414 +134,105 @@ body {
 }
 
 
-/* From Uiverse.io by roajuan93 */ 
+/*Color de fondo del boton "ver contraseña" en 
+  formulario login */
+#toggle-pass {
+  background-color: black
+}
 
-/* for all social containers*/
-.socialContainer {
-  width: 42px;
-  height: 42px;
-  border-radius: 5px;
-  background-color: rgb(44, 44, 44);
+
+/*Recuadro de inputs del login a ser invalidas
+  las credenciales*/
+.form-control.is-invalid + #toggle-pass {
+  border: 1px solid #dc3545;
+}
+/*-------------------------------------------------------*/
+/*-------------------------------------------------------*/
+
+
+
+
+/*------------- PAGINA DEL LOBBY (Principal) ------------*/
+/*-------------------------------------------------------*/
+/*Estilo degrade en titulo del servicio en lobby
+ y boton de barra superior*/
+.degrade-lobby {
+  background: linear-gradient(90deg, #59d0ff, #fc6914);
+  -webkit-background-clip: text; /* para Chrome, Safari */
+  -webkit-text-fill-color: transparent; 
+  background-clip: text; /* para navegadores modernos */
+  color: transparent; /* fallback */
+}
+
+
+/*Estilos del contenedor de texto de biografia en lobby*/
+#bio-container {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  transition-duration: 0.3s;
-}
-/* Whatsapp*/
-.containerFour:hover {
-  background-color: green;
-  transition-duration: 0.3s;
-}
-
-/* Whatsapp*/
-.containerFour-un:hover {
-  background-color: rgb(128, 15, 0);
-  transition-duration: 0.3s;
-}
-
-.socialContainer:active {
-  transform: scale(0.9);
-  transition-duration: 0.3s;
-}
-
-.socialSvg {
-  width: 19px;
-}
-
-.socialSvg path {
-  fill: rgb(255, 255, 255);
-}
-
-.socialContainer:hover .socialSvg {
-  animation: slide-in-top 0.3s both;
-}
-
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-#filtros {
-  width: 300px; 
-  flex-shrink: 0;
+  flex-direction: column;
+  padding-top: 0.5vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
-/* From Uiverse.io by namecho */ 
-.switch {
- --button-width: 3.5em;
- --button-height: 2em;
- --toggle-diameter: 1.5em;
- --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
- --toggle-shadow-offset: 10px;
- --toggle-wider: 3em;
- --color-grey: #cccccc;
- --color-green: #4296f4;
-}
-
-.slider {
- display: inline-block;
- width: var(--button-width);
- height: var(--button-height);
- background-color: var(--color-grey);
- border-radius: calc(var(--button-height) / 2);
- position: relative;
- transition: 0.3s all ease-in-out;
-}
-
-.slider::after {
- content: "";
- display: inline-block;
- width: var(--toggle-diameter);
- height: var(--toggle-diameter);
- background-color: #fff;
- border-radius: calc(var(--toggle-diameter) / 2);
- position: absolute;
- top: var(--button-toggle-offset);
- transform: translateX(var(--button-toggle-offset));
- box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
- transition: 0.3s all ease-in-out;
-}
-
-.switch input[type="checkbox"]:checked + .slider {
- background-color: var(--color-green);
-}
-
-.switch input[type="checkbox"]:checked + .slider::after {
- transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
- box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
-}
-
-.switch input[type="checkbox"] {
- display: none;
-}
-
-.switch input[type="checkbox"]:active + .slider::after {
- width: var(--toggle-wider);
-}
-
-.switch input[type="checkbox"]:checked:active + .slider::after {
- transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
-}
-
-.switch {
-  vertical-align: middle;
-  display: inline-flex;
-  align-items: center;
-  height: 2em; /* igual a --button-height */
-}
-
-.respondida {
-  background-color: #23eb11 !important;
-}
-
-.pendiente {
-  background-color: #ffca1a !important;
-}
-
-
-
-
-.sparkle {
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 138, 4, 0.7);
-    border-radius: 50%;
-    position: absolute;
-    animation: sparkleAnimation 10s linear, sparkleFadeMove 10s linear forwards;
-    box-shadow: 0 0 20px #fffb00, 0 0 40px #fffb00, 0 0 80px #fffb00;
-    z-index: -1;
-    opacity: 0;
-}
-
-@keyframes sparkleAnimation {
-    0% {
-        opacity: 1;
-        transform: translateY(0) translateX(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(calc(var(--randomYDirection) * 50px)) translateX(calc(var(--randomXDirection) * 50px));
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes sparkleFadeMove {
-    0% {
-        opacity: 0;
-        transform: translateY(0) translateX(0);
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(calc(var(--randomYDirection) * 50px))
-                   translateX(calc(var(--randomXDirection) * 50px));
-    }
-}
-
-
-
-/* From Uiverse.io by Galahhad */ 
-/* tooltip settings 👇 */
-
-.copy {
-  /* button */
-  --button-bg: #353434;
-  --button-hover-bg: #464646;
-  --button-text-color: #CCCCCC;
-  --button-hover-text-color: #8bb9fe;
-  --button-border-radius: 10px;
-  --button-diameter: 36px;
-  --button-outline-width: 1px;
-  --button-outline-color: rgb(141, 141, 141);
-  /* tooltip */
-  --tooltip-bg: #f4f3f3;
-  --toolptip-border-radius: 4px;
-  --tooltip-font-family: Menlo, Roboto Mono, monospace;
-  /* 👆 this field should not be empty */
-  --tooltip-font-size: 12px;
-  /* 👆 this field should not be empty */
-  --tootip-text-color: rgb(50, 50, 50);
-  --tooltip-padding-x: 7px;
-  --tooltip-padding-y: 7px;
-  --tooltip-offset: 8px;
-  /* --tooltip-transition-duration: 0.3s; */
-  /* 👆 if you need a transition, 
-  just remove the comment,
-  but I didn't like the transition :| */
-}
-
-.copy {
-  box-sizing: border-box;
-  width: var(--button-diameter);
-  height: var(--button-diameter);
-  border-radius: var(--button-border-radius);
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
-  border: none;
-  cursor: pointer;
-  position: relative;
-  outline: none;
-}
-
-.tooltip {
-  position: absolute;
-  opacity: 0;
-  visibility: 0;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font: var(--tooltip-font-size) var(--tooltip-font-family);
-  color: var(--tootip-text-color);
-  background: var(--tooltip-bg);
-  padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
-  border-radius: var(--toolptip-border-radius);
-  pointer-events: none;
-  transition: all var(--tooltip-transition-duration) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.tooltip::before {
-  content: attr(data-text-initial);
-}
-
-.tooltip::after {
-  content: "";
-  position: absolute;
-  bottom: calc(var(--tooltip-padding-y) / 2 * -1);
-  width: var(--tooltip-padding-y);
-  height: var(--tooltip-padding-y);
-  background: inherit;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  z-index: -999;
-  pointer-events: none;
-}
-
-.copy svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.checkmark {
-  display: none;
-}
-
-/* actions */
-
-.copy:hover .tooltip,
-.copy:focus:not(:focus-visible) .tooltip {
-  opacity: 1;
-  visibility: visible;
-  top: calc((100% + var(--tooltip-offset)) * -1);
-}
-
-.copy:focus:not(:focus-visible) .tooltip::before {
-  content: attr(data-text-end);
-}
-
-.copy:focus:not(:focus-visible) .clipboard {
-  display: none;
-}
-
-.copy:focus:not(:focus-visible) .checkmark {
-  display: block;
-}
-
-.copy:hover,
-.copy:focus {
-  background-color: var(--button-hover-bg);
-}
-
-.copy:active {
-  outline: var(--button-outline-width) solid var(--button-outline-color);
-}
-
-.copy:hover svg {
-  color: var(--button-hover-text-color);
-}
-
-
-#map {
-   height: 100%; 
-   width: 100%;
-}
-
-
-
-/* BITACORA */
-
-/* GRID PRINCIPAL: 3 zonas */
-
-/* Wrapper controla todo el grid */
-.wrapper-bitacora {
-  display: grid;
-  grid-template-rows: 40vh auto;          /* header 90vh, paneles auto */
-  grid-template-columns: 1fr 1fr;        /* 2 columnas iguales abajo */
-  grid-template-areas:
-    "header header"
-    "left   right";
-  gap: 12px;
-  padding: 12px;
-  min-height: 100vh;      /* altura mínima del viewport, permite crecimiento */
-  color: #e6e8ee;
-}
-
-/* Header */
-header {
-  grid-area: header;
-  background: #151923;
-  border: 1px solid #232a36;
-  border-radius: 12px;
-}
-
-#timeline {
-  height: 100%;
+/*Alineacion de los H@ en contenedor de bio*/
+#bio-container h2:last-of-type {
+  align-self: flex-end;
+  text-align: right;
   width: 100%;
 }
 
-/* Paneles con altura fija y scroll interno */
-main.left,
-main.right {
-  background: #151923;
-  border: 1px solid #232a36;
-  border-radius: 12px;
-  padding: 12px;
-  height: 600px;          /* Altura fija de los paneles */
-  overflow-y: auto;       /* Scroll vertical cuando el contenido excede */
-  overflow-x: hidden;     /* Sin scroll horizontal */
-}
 
-main.left  { grid-area: left;  }
-main.right { grid-area: right; }
-
-.left p, .right p {
-    font-size: 16px  !important;
-    margin-bottom: 6px !important; /* Reducir de 12px a 4px */
-}
-
-/* Responsive: apila los paneles en pantallas angostas */
-@media (max-width: 900px) {
-  .wrapper-bitacora {
-    grid-template-rows: 50vh auto auto;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "left"
-      "right";
-  }
-  
-  main.left,
-  main.right {
-    height: 400px;        /* Altura más pequeña en móvil */
-  }
-}
-
-
-/* BITACORA */
-.custom-header {
-  gap: 0.5rem;
-}
-
-.custom-header > *:last-child {
-  margin-left: 0.5rem; /* Gap pequeño entre el medio y el último */
-}
-
-.custom-header > *:nth-last-child(2) {
-  margin-left: auto; /* Empuja el penúltimo elemento (y el último) hacia la derecha */
-}
-
-/* Asegurar que el ícono no se desborde */
-#btn-bitacora {
-  padding: 0px !important;
+/*Alineacion del contenedor del logo principal del lobby*/
+#lobby-logo, #index-back {
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-decoration: none !important;
-  flex-shrink: 0; /* Evita que se encoja */
-  min-width: fit-content; /* Mantiene su tamaño mínimo */
-  color: rgb(0, 117, 20)
+  align-items: center;
+  flex-direction: column;
 }
+
+#index-back {
+  min-height: 80vh;
+  transition: opacity 2s ease;
+  opacity: 0;
+}
+
+/*Imagen del logo del servicio en la pagina del lobby*/
+.navbar-brand-image {
+    height: 18vh;
+    width: auto;
+}
+
+/*Tamaño del titulo del servicio en la pagina del lobby*/
+.logo-title-lobby {
+  font-size: 1.7rem;
+}
+/*-------------------------------------------------------*/
+/*-------------------------------------------------------*/
+
+
+
+
+/*-------------------- LOBBY LOGO  ----------------------*/
+/*-------------------------------------------------------*/
+
+.navbar-dark {
+  background-color: #160c06 !important;
+}
+
+.supbar-lobby,.navbar-dark {
+  background-color: #021a3d !important;
+}
+
+/*-------------------------------------------------------*/
+/*-------------------------------------------------------*/
+
+
+#status-code, #status-message {
+  color: white;
+}
+
+
+

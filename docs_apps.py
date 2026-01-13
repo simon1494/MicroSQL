@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 import httpx
 from pathlib import Path
 from fastapi.responses import FileResponse
-from settings import settings
+from config import settings
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -42,11 +42,11 @@ docs_gen = FastAPI()
 
 @docs_gen.get("/gen-pdf")
 def manual_gen():
-    """pdf_path = BASE_DIR / "docs" / "docs-gen" / "site" / "guia-quiron.pdf"
+    """pdf_path = BASE_DIR / "docs" / "docs-gen" / "site" / "guia-ariadna.pdf"
     if not pdf_path.exists():
         raise HTTPException(status_code=404, detail="PDF no encontrado")
     return FileResponse(
-        pdf_path, media_type="application/pdf", filename="guia-quiron.pdf"
+        pdf_path, media_type="application/pdf", filename="guia-ariadna.pdf"
     )"""
 
     pdf_path = (
@@ -75,9 +75,7 @@ class DocsAuthMiddleware(BaseHTTPMiddleware):
             try:
                 # Construir la URL base del servidor actual
                 base_url = f"{request.url.scheme}://{request.url.netloc}"
-                print(base_url)
                 check_url = f"{base_url}/{settings.APP_NAME.lower()}/activo"
-                print(check_url)
 
                 # Copiar las cookies del request original para enviarlas en la verificación
                 cookies = request.cookies
@@ -98,7 +96,6 @@ class DocsAuthMiddleware(BaseHTTPMiddleware):
                                 response = await call_next(request)
                                 return response
 
-                    print("Usuario no autenticado o inactivo")
                     return RedirectResponse(url=f"/{settings.APP_NAME.lower()}/login")
 
             except httpx.RequestError:

@@ -8,10 +8,8 @@ from admin.custom_admin import CustomAdmin
 import uvicorn
 from contextlib import asynccontextmanager
 from database.db import async_engine
-from views import exposed
-
-# from docs_apps import docs_gen, docs_op, DocsAuthMiddleware
-# from fastapi.staticfiles import StaticFiles
+from views import exposed, ayuda, panel_usuario
+from docs_apps import docs_gen, docs_op
 
 
 @asynccontextmanager
@@ -53,8 +51,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-"""app.mount("/documentacion", docs_gen)
-app.mount("/documentacion-operadores", docs_op)"""
+app.mount("/documentacion", docs_gen)
+app.mount("/documentacion-operadores", docs_op)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
@@ -77,6 +75,10 @@ admin = CustomAdmin(
 # app.add_middleware(DocsAuthMiddleware)
 
 admin.add_view(exposed.ExposedView)
+admin.add_view(ayuda.AyudaView)
+admin.add_view(ayuda.ManualView)
+admin.add_view(panel_usuario.DatosPersonalesView)
+admin.add_view(panel_usuario.SeguridadView)
 
 
 if __name__ == "__main__":

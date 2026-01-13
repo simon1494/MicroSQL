@@ -1,0 +1,125 @@
+{% extends "sqladmin/layout.html" %}
+
+{% block content %}
+<div id="fade-in" class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">{{ title }}</h3>
+      </div>
+      <div class="card-body border-bottom py-3">
+        <form id="form" action="" method="POST"
+          enctype="multipart/form-data">
+          <div class="row">
+          </div>
+          <div class="form-fieldset">
+            {% for field in form %}
+            <div>
+              {% if field.type in ['SelectField','SelectMultipleField'] %}
+                {{ field.label(class="form-label") }} {{ field(class='tomselect', **{'data-key': field.name}) }}
+              {% else %}
+                {{ field.label(class="form-label") }} {{ field }}
+              {% endif %}
+            </div>
+            <br>
+            {% endfor %}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <a href="/" class="btn">
+                Cancelar
+              </a>
+            </div>
+            <div class="col-md-6">
+              <div class="btn-group flex-wrap" data-toggle="buttons">
+                <input type="submit" name="enviar" value="Enviar" class="btn" id="boton-enviar">
+                <div id="spinner-enviar" class="spinner-grow text-blue" role="status" style="display: none;">
+                  <span class="visually-hidden">Cargando...</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    {% include 'sqladmin/modals/modificados.html' %}
+    {% include 'sqladmin/modals/advertencia.html' %}
+  </div>
+{% endblock %}
+
+{% block tail %}  
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const logo = document.getElementById("fade-in");
+        requestAnimationFrame(() => {
+            logo.style.opacity = "1";
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const errorDiv = document.getElementById("mensaje-alert");
+      if (errorDiv) {
+        setTimeout(() => {
+          errorDiv.classList.add("fade-out");
+          setTimeout(() => {
+            errorDiv.style.display = "none";
+          }, 1000); //
+        }, 15000); //
+      }
+    });
+  </script>
+  <script>        
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('form');
+
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          $('#boton-enviar').hide();
+          $('#spinner-enviar').show();
+
+          try {
+            // Crear FormData desde el formulario
+            const formData = new FormData(form);
+
+            // Hacer POST con fetch
+            const response = await fetch('/ariadna/cambiar-passw', {
+              method: 'POST',
+              body: formData  // Enviar como FormData, NO como JSON
+            });
+
+            if (response.ok) {
+              $('#spinner-enviar').hide();
+              $('#modal-modificados').modal('show');
+            } else {
+              let respuesta = await response.json()
+              console.log('se pudrio')
+              
+              // Restaurar botón
+              $('#boton-enviar').show();
+              $('#spinner-enviar').hide();
+
+              $('#modal-advertencia-text').text(respuesta);
+              $('#modal-advertencia').modal('show');
+            }
+          } catch (error) {
+            console.error('Error en la petición:', error);
+            alert('Error de red o servidor. Por favor, intente nuevamente.');
+            
+            // Restaurar botón
+            botonEnviar.style.display = 'inline-block';
+            spinner.style.display = 'none';
+          }
+        });
+      }
+      
+      // Redirigir a / cuando se cierre el modal
+      $('#modal-modificados').on('hidden.bs.modal', function () {
+        window.location.href = '/';
+      });
+    });
+  </script>
+{% endblock %}
