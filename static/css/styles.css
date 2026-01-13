@@ -41,24 +41,10 @@ body {
   width: 100%;
   height: 100%;
 
-  background: #000000;
-  --gap: 5em;
-  --line: 1px;
-  --color: rgba(255, 255, 255, 0.2);
-
-  background-image: linear-gradient(
-      -90deg,
-      transparent calc(var(--gap) - var(--line)),
-      var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    ),
-    linear-gradient(
-      0deg,
-      transparent calc(var(--gap) - var(--line)),
-      var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    );
-  background-size: var(--gap) var(--gap);
+  background-image: url("../../img/login-back.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -66,7 +52,7 @@ body {
 #formulario-login {
     width: 20dvw;
     height: 40dvh;
-    background-color: rgba(165, 80, 10, 0.3);
+    background-color: rgba(94, 49, 16, 0.3);
     max-height: 23rem;
     min-width: 23rem;
     min-height: 21rem;
@@ -96,7 +82,7 @@ body {
 
 
 #button-sbt-login {
-    background-color: rgb(27, 88, 255)
+    background-color: rgb(6, 15, 36)
 }
 
 
@@ -196,6 +182,11 @@ body {
 #index-back {
   min-height: 80vh;
   transition: opacity 2s ease;
+  opacity: 0;
+}
+
+#formulario-login {
+  transition: opacity 1.5s ease-out;
   opacity: 0;
 }
 

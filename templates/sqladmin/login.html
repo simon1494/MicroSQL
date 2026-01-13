@@ -6,4 +6,15 @@
 {% endblock %}
 
 {% block tail %}
+<script>
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const logo = document.getElementById("formulario-login"); 
+        requestAnimationFrame(() => {
+            logo.style.opacity = "1";
+        });
+
+    });        
+
+</script>
 {% endblock tail %}
